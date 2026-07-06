@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailorPro - Tailor Management App</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <div class="sidebar">
+            <h1>TailorPro</h1>
+            <ul class="menu">
+                <li data-page="dashboard">Dashboard</li>
+                <li data-page="customers">Customers</li>
+                <li data-page="new-order">New Order</li>
+                <li data-page="measurements">Measurements</li>
+                <li data-page="neck-sketch">Neck Sketch</li>
+                <li data-page="photos">Photos</li>
+                <li data-page="voice">Voice</li>
+                <li data-page="notes">Notes</li>
+                <li data-page="billing">Billing</li>
+                <li data-page="invoice">Invoice</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <!-- Dashboard -->
+            <div id="dashboard" class="page active">
+                <h1>Dashboard</h1>
+                <div class="cards">
+                    <div class="card">
+                        <h2>👤 Customers</h2>
+                        <p id="customerCount">0</p>
+                    </div>
+                    <div class="card">
+                        <h2>📦 Orders</h2>
+                        <p id="orderCount">0</p>
+                    </div>
+                    <div class="card">
+                        <h2>💰 Revenue</h2>
+                        <p id="revenue">₹0</p>
+                    </div>
+                    <div class="card">
+                        <h2>📅 Today Delivery</h2>
+                        <p id="deliveryCount">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer List -->
+            <div id="customers" class="page">
+                <h1>Customer List</h1>
+                <input type="text" id="searchCustomer" placeholder="Search customer">
+                <div id="customerList"></div>
+            </div>
+
+            <!-- New Order -->
+            <div id="new-order" class="page">
+                <h1>New Order</h1>
+                <input id="name" placeholder="Customer Name">
+                <input id="phone" placeholder="Phone">
+                <input id="dress" placeholder="Dress Type">
+                <input id="delivery" type="date">
+                <button id="saveOrder">Save Order</button>
+            </div>
+
+            <!-- Measurements -->
+            <div id="measurements" class="page">
+                <h1>Measurements</h1>
+                <input placeholder="Chest">
+                <input placeholder="Waist">
+                <input placeholder="Shoulder">
+                <input placeholder="Sleeve">
+                <textarea placeholder="Other"></textarea>
+                <button>Save</button>
+            </div>
+
+            <!-- Neck Sketch -->
+            <div id="neck-sketch" class="page">
+                <h1>Neck Sketch</h1>
+                <div class="toolbar">
+                    <label>🎨 Color</label>
+                    <input type="color" id="brushColor" value="#000000">
+                    <label>✏️ Size</label>
+                    <input type="range" id="brushSize" min="1" max="15" value="3">
+                    <button id="undoCanvas">Undo</button>
+                    <button id="clearCanvas">Clear</button>
+                    <button id="saveSketch">Save</button>
+                    <button id="downloadSketch">PNG</button>
+                </div>
+                <canvas id="canvas" width="350" height="450"></canvas>
+            </div>
+
+            <!-- Photos -->
+            <div id="photos" class="page">
+                <h1>Photos</h1>
+                <input type="file" accept="image/*" multiple id="photoInput">
+                <div id="gallery"></div>
+            </div>
+
+            <!-- Voice Recording -->
+            <div id="voice" class="page">
+                <h1>Voice Recording</h1>
+                <button id="recordBtn">🎤 Start Recording</button>
+                <div id="recordings"></div>
+            </div>
+
+            <!-- Notes -->
+            <div id="notes" class="page">
+                <h1>Notes</h1>
+                <textarea id="notesArea" rows="12"></textarea>
+                <button id="saveNote">Save</button>
+            </div>
+
+            <!-- Billing -->
+            <div id="billing" class="page">
+                <h1>Billing</h1>
+                <input id="amount" type="number" placeholder="Amount (₹)">
+                <select id="status">
+                    <option value="Pending">Pending</option>
+                    <option value="Cutting">Cutting</option>
+                    <option value="Stitching">Stitching</option>
+                    <option value="Trial">Trial</option>
+                    <option value="Ready">Ready</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+                <button>Generate Bill</button>
+            </div>
+
+            <!-- Invoice -->
+            <div id="invoice" class="page">
+                <h1>PDF Invoice</h1>
+                <button id="pdfBtn">Download PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script src="sketch.js"></script>
+    <script src="voice.js"></script>
+</body>
+</html>
